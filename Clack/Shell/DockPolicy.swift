@@ -1,7 +1,7 @@
 import AppKit
 
-/// Shows the Dock icon only while a real Clack window (main or Settings) is open or
-/// minimized; otherwise Clack lives in the menu bar as an accessory app.
+/// Keeps Clack out of the Dock: it lives in the menu bar as an accessory app, even
+/// while its main or Settings window is open.
 @MainActor
 enum DockPolicy {
     private static var observers: [NSObjectProtocol] = []
@@ -26,14 +26,9 @@ enum DockPolicy {
     }
 
     static func update() {
-        let hasWindow = NSApp.windows.contains { window in
-            !(window is NSPanel)
-                && window.styleMask.contains(.titled)
-                && (window.isVisible || window.isMiniaturized)
-        }
-        let wanted: NSApplication.ActivationPolicy = hasWindow ? .regular : .accessory
-        if NSApp.activationPolicy() != wanted {
-            NSApp.setActivationPolicy(wanted)
+        // Owner's choice: Clack never shows in the Dock, only in the menu bar.
+        if NSApp.activationPolicy() != .accessory {
+            NSApp.setActivationPolicy(.accessory)
         }
     }
 }

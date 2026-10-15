@@ -21,6 +21,9 @@ enum KeyCodeMap {
         0x79: 3665, 0x7B: 57419, 0x7C: 57421, 0x7D: 57424, 0x7E: 57416, 0x3F: 3666,
         // Mac position swap (per side): Command -> Alt slot, Option -> Meta slot.
         0x37: 56, 0x36: 3640, 0x3A: 3675, 0x3D: 3676,
+        // Top-row specials on newer Macs play their F-key slot: Launchpad and Spotlight F4,
+        // Mission Control F3, Dictation F5, Do Not Disturb F6.
+        0x83: 62, 0xA0: 61, 0xB1: 62, 0xB0: 63, 0xB2: 64,
         // JIS extras (Eisu, Kana, Yen, underscore, keypad comma) play as a generic letter.
         0x5D: 30, 0x5E: 30, 0x5F: 30, 0x66: 30, 0x68: 30,
     ]
@@ -31,6 +34,9 @@ enum KeyCodeMap {
         29: [3613], 3613: [29], 42: [54], 54: [42],
         3612: [28], 3597: [69, 13], 3667: [14],
         91: [88], 92: [88], 93: [88],
+        // F-keys (and the media keys that play as them) fall back to Escape, same row.
+        59: [1], 60: [1], 61: [1], 62: [1], 63: [1], 64: [1],
+        65: [1], 66: [1], 67: [1], 68: [1], 87: [1], 88: [1],
         // Keypad to main row for packs without a numpad.
         79: [2], 80: [3], 81: [4], 75: [5], 76: [6], 77: [7], 71: [8], 72: [9], 73: [10],
         82: [11], 83: [52], 74: [12], 78: [13], 55: [9], 3637: [53], 69: [1],

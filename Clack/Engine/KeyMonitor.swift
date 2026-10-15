@@ -1,3 +1,4 @@
+import AppKit
 import CoreGraphics
 import Foundation
 import os
@@ -89,6 +90,7 @@ final class KeyMonitor: @unchecked Sendable {
             (1 << CGEventType.keyDown.rawValue)
             | (1 << CGEventType.keyUp.rawValue)
             | (1 << CGEventType.flagsChanged.rawValue)
+            | (1 << KeyMonitor.systemDefinedType)   // brightness, volume, media keys
 
         guard let tap = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
@@ -141,6 +143,32 @@ final class KeyMonitor: @unchecked Sendable {
         CFRunLoopRemoveSource(runLoop, source, .commonModes)
     }
 
+    /// NX_SYSDEFINED: the top-row brightness, volume, media and keyboard-light keys.
+    private static let systemDefinedType: UInt32 = 14
+
+    /// NX_KEYTYPE_* -> the Mac F-key code whose pack slot it plays (F1...F12 layout).
+    private static let auxKeyCodes: [Int: UInt16] = [
+        3: 0x7A, 2: 0x78,                       // brightness down/up: F1, F2
+        22: 0x60, 21: 0x61, 23: 0x61,           // keyboard light down/up/toggle: F5, F6
+        20: 0x62, 18: 0x62,                     // rewind/previous: F7
+        16: 0x64,                               // play/pause: F8
+        19: 0x65, 17: 0x65,                     // fast/next: F9
+        7: 0x6D, 1: 0x67, 0: 0x6F,              // mute, volume down/up: F10, F11, F12
+    ]
+
+    private func processSystemDefined(_ event: CGEvent) {
+        guard let ns = NSEvent(cgEvent: event), ns.subtype.rawValue == 8 else { return }
+        let data1 = ns.data1
+        let keyType = (data1 & 0xFFFF0000) >> 16
+        let keyFlags = data1 & 0xFFFF
+        let keyState = (keyFlags & 0xFF00) >> 8
+        guard let keyCode = Self.auxKeyCodes[keyType], keyState == 0xA || keyState == 0xB else { return }
+        handler(KeyEvent(keyCode: keyCode,
+                         kind: keyState == 0xA ? .down : .up,
+                         isAutorepeat: keyFlags & 0x1 != 0,
+                         flags: event.flags.rawValue))
+    }
+
     private func process(type: CGEventType, event: CGEvent) {
         let kind: KeyEvent.Kind
         switch type {
@@ -153,6 +181,7 @@ final class KeyMonitor: @unchecked Sendable {
             }
             return
         default:
+            if type.rawValue == Self.systemDefinedType { processSystemDefined(event) }
             return
         }
         let keyEvent = KeyEvent(
