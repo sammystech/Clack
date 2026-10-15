@@ -28,6 +28,8 @@ struct AboutSettingsPane: View {
             Text("Plays sound packs made for Mechvibes.")
                 .font(DS.Typo.caption)
                 .foregroundStyle(.tertiary)
+            Button("Check for Updates…") { Updater.shared.checkNow() }
+                .padding(.top, DS.Space.s)
         }
         .multilineTextAlignment(.center)
         .frame(width: DS.Size.settingsWidth, height: 320)

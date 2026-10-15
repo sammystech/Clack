@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GeneralSettingsPane: View {
+    @AppStorage(Updater.autoInstallKey) private var autoInstallUpdates = true
     @State private var launchAtLogin = false
     @State private var needsApproval = false
     @State private var loginError: String?
@@ -42,6 +43,18 @@ struct GeneralSettingsPane: View {
                     }
                     .font(DS.Typo.caption)
                 }
+            }
+
+            Section {
+                Toggle(isOn: $autoInstallUpdates) {
+                    Text("Install updates automatically")
+                    Text("Clack checks GitHub every few hours and relaunches itself on a new version.")
+                }
+                LabeledContent("Version \(Updater.shared.currentVersion)") {
+                    Button("Check Now") { Updater.shared.checkNow() }
+                }
+            } header: {
+                Text("Updates")
             }
 
             Section {

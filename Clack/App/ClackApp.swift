@@ -12,6 +12,9 @@ struct ClackApp: App {
         .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .newItem) { }
+            CommandGroup(after: .appInfo) {
+                Button("Check for Updates…") { Updater.shared.checkNow() }
+            }
         }
     }
 }

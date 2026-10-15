@@ -104,6 +104,7 @@ final class StatusItemController: NSObject {
         menu.addItem(makeItem("Open Custom Packs Folder", symbol: "folder", action: #selector(openPacksFolder)))
         menu.addItem(.separator())
 
+        menu.addItem(makeItem("Check for Updates…", symbol: "arrow.down.circle", action: #selector(checkForUpdates)))
         let settings = makeItem("Settings…", symbol: "gearshape", action: #selector(openSettings))
         settings.keyEquivalent = ","
         settings.keyEquivalentModifierMask = [.command]
@@ -135,5 +136,6 @@ final class StatusItemController: NSObject {
     @objc private func reloadPacks() { model.reloadPacks() }
     @objc private func openPacksFolder() { model.openCustomPacksFolder() }
     @objc private func openSettings() { SettingsOpener.open() }
+    @objc private func checkForUpdates() { Updater.shared.checkNow() }
     @objc private func quit() { NSApp.terminate(nil) }
 }

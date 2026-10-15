@@ -39,6 +39,7 @@
 		7987C2CCA372F6D29DA344EB /* KeyActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDADE79DEE9E7EC5BE7C9CF /* KeyActivity.swift */; };
 		879CB9D7D422BF5D83BE4A79 /* PacksSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E9DBD681748030C14A73AB /* PacksSettingsPane.swift */; };
 		88AC477A9CED6182CB7B43F7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B122FBEB5BAF1C4E9E0BA5 /* OnboardingView.swift */; };
+		8FBAF24F1EE3E45632E90ECA /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239E07D857F6D0D66219E3BA /* Updater.swift */; };
 		9B6F37509749F636ACC1A581 /* SettingsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F4284EDD13F40A577D22BB /* SettingsRootView.swift */; };
 		9C5F2DD143EA86A345E88341 /* PermissionBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC354649498523AB9F521A3B /* PermissionBanner.swift */; };
 		A4B8560836ABECF2E0163787 /* PackLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53641D6D5712AC075CCCBAF3 /* PackLibrary.swift */; };
@@ -63,6 +64,7 @@
 		0A9D40C9E164FD0E1544450C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		17F112AD82A0677B48985209 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		1E72E882E185E2B62CEF865C /* MechvibesBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechvibesBank.swift; sourceTree = "<group>"; };
+		239E07D857F6D0D66219E3BA /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		2A4342FC00CA2A73A3093B70 /* ShortcutRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorder.swift; sourceTree = "<group>"; };
 		2CB19100466FA13EFDFF396E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		2F4E506DC7842C97E13FE4B7 /* DockPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockPolicy.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				D20EF692E97086CFB7E8AD79 /* AppDelegate.swift */,
 				B1F27E5F0D41C9E70F5A97B3 /* ClackApp.swift */,
+				239E07D857F6D0D66219E3BA /* Updater.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				531CC4FE1E06EA6E3F600333 /* SynthBank.swift in Sources */,
 				669910EBB551A9770B4B8BEA /* SynthDSP.swift in Sources */,
 				767706343C0D5547C3766867 /* SystemVolumeMonitor.swift in Sources */,
+				8FBAF24F1EE3E45632E90ECA /* Updater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CH6CSBA54G;
 				ENABLE_APP_SANDBOX = NO;
@@ -390,7 +394,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Clack/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
 				PRODUCT_NAME = Clack;
 				SDKROOT = macosx;
@@ -525,7 +529,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CH6CSBA54G;
 				ENABLE_APP_SANDBOX = NO;
@@ -533,7 +537,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Clack/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
 				PRODUCT_NAME = Clack;
 				SDKROOT = macosx;

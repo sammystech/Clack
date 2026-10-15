@@ -44,6 +44,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         model.start()
         statusItemController = StatusItemController(model: model)
         DockPolicy.start()
+        Updater.shared.startBackgroundChecks()
 
         powerOffObserver = NSWorkspace.shared.notificationCenter.addObserver(
             forName: NSWorkspace.willPowerOffNotification, object: nil, queue: .main

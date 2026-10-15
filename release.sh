@@ -1,6 +1,6 @@
 #!/bin/bash
 # Build Clack, sign it with Developer ID, notarize with Apple, staple, package
-# a signed DMG into dist/, and (unless NO_PUBLISH=1) tag + publish a GitHub release.
+# a signed drag-to-Applications DMG into dist/, and (unless NO_PUBLISH=1) tag + publish a GitHub release.
 #
 #   ./release.sh 1.0 "What changed"
 #   NO_PUBLISH=1 ./release.sh 1.0          # build + notarize + DMG only
@@ -92,11 +92,12 @@ codesign --verify --deep --strict "$APP" || die "Bundle signature doesn't verify
 say "Packaging the DMG…"
 mkdir -p dist
 DMG="dist/$APP_NAME.dmg"
-STAGE="$BUILD_DIR/dmg"
-rm -rf "$STAGE" "$DMG"; mkdir -p "$STAGE"
-cp -R "$APP" "$STAGE/"
-ln -s /Applications "$STAGE/Applications"
-hdiutil create -volname "$APP_NAME" -srcfolder "$STAGE" -ov -format UDZO "$DMG" >/dev/null
+rm -f "$DMG"
+# Branded installer window (background + arrow to Applications), built by dmgbuild.
+[ -x .venv/bin/dmgbuild ] || { python3 -m venv .venv && .venv/bin/pip install -q dmgbuild; } || die "Couldn't set up dmgbuild."
+.venv/bin/dmgbuild -s dmg_settings.py -D app="$APP" -D volicon="$APP/Contents/Resources/AppIcon.icns" "$APP_NAME" "$DMG" \
+    > "$BUILD_DIR/dmg.log" 2>&1 || { tail -20 "$BUILD_DIR/dmg.log"; die "DMG build failed."; }
+# The app inside carries its own stapled ticket; the updater checks its signature before installing.
 codesign --force --sign "$SIGN_IDENTITY" --timestamp "$DMG" || die "Couldn't sign the DMG."
 ls -lh "$DMG"
 
