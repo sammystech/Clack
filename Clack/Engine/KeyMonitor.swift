@@ -156,7 +156,15 @@ final class KeyMonitor: @unchecked Sendable {
         7: 0x6D, 1: 0x67, 0: 0x6F,              // mute, volume down/up: F10, F11, F12
     ]
 
+    /// Real presses from a keyboard arrive from the HID system with no sending process.
+    /// Anything a program injects (scripts, AI or auto typers, remote control) carries that
+    /// program's PID, even when it claims the HID state, so it never plays a sound.
+    private static func isPhysical(_ event: CGEvent) -> Bool {
+        event.getIntegerValueField(.eventSourceUnixProcessID) == 0
+    }
+
     private func processSystemDefined(_ event: CGEvent) {
+        guard Self.isPhysical(event) else { return }
         guard let ns = NSEvent(cgEvent: event), ns.subtype.rawValue == 8 else { return }
         let data1 = ns.data1
         let keyType = (data1 & 0xFFFF0000) >> 16
@@ -184,6 +192,7 @@ final class KeyMonitor: @unchecked Sendable {
             if type.rawValue == Self.systemDefinedType { processSystemDefined(event) }
             return
         }
+        guard Self.isPhysical(event) else { return }
         let keyEvent = KeyEvent(
             keyCode: UInt16(truncatingIfNeeded: event.getIntegerValueField(.keyboardEventKeycode)),
             kind: kind,
