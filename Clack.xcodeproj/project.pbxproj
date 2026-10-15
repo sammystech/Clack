@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		118B314E998683DC6AFD605C /* GeneralSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C83FEBE085B2A2E21CC18 /* GeneralSettingsPane.swift */; };
+		16B0A545EACCA393B8DBF3B9 /* PackImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66BC5543CF0281A78D3F109 /* PackImporter.swift */; };
+		1B1DA215F15154F3F0F90312 /* ClackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E5F0D41C9E70F5A97B3 /* ClackApp.swift */; };
+		1BC699E8E9B3ED1421678269 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA69207E969F3ABC896C10 /* StatusItemController.swift */; };
+		1C0A996A67D3F9EBAA83D729 /* AboutSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A77FED7F4C1E21BBAD18CC /* AboutSettingsPane.swift */; };
+		2001EDCC1BDF080A75A1A72E /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB19100466FA13EFDFF396E /* MainWindowController.swift */; };
+		26616757D3A7E66367D1B896 /* MenuBarPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5348B0BE5226AF1D37AC857F /* MenuBarPanelView.swift */; };
+		2B353D49A7D176385DA1DDF7 /* KeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4E017D3AD550554E74812 /* KeyMonitor.swift */; };
+		2BFE4DA63A38555C5D9F77F1 /* ControlsCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABECDFFC8868F08657DC2D3B /* ControlsCluster.swift */; };
+		384E66CB4A585C925443E20B /* FolderWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B02C7D7B525E202AEED6B4B /* FolderWatcher.swift */; };
+		3C8230EF865B2F322B779EBC /* PermissionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58B5EF10CF8F2346E33D67 /* PermissionMonitor.swift */; };
+		405AE445C918BEAE904E43ED /* DockPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E506DC7842C97E13FE4B7 /* DockPolicy.swift */; };
+		43E92367EB96E047B47841AA /* SoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D25BCB80A63DF9A75ADB86 /* SoundEngine.swift */; };
+		46EAC5AE069CACF4330DAECF /* KeyCodeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305353B9B50D3C2836E966F3 /* KeyCodeMap.swift */; };
+		4A400C75F8DC14A8AE00FD68 /* SoundBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DC726E5BEEA1BBAAC1C85 /* SoundBank.swift */; };
+		52E0C05C96647ADFB6C1E208 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EF692E97086CFB7E8AD79 /* AppDelegate.swift */; };
+		531CC4FE1E06EA6E3F600333 /* SynthBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF43CEAFE6544D7BD0D7A70 /* SynthBank.swift */; };
+		5326958A3094EDE402D0ED3B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D12826DD4DBBBF5EFDA3D /* AppModel.swift */; };
+		5491B8E9869AA3FDA3AB5F82 /* SeededRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6610DEECD16FEBEEE4149433 /* SeededRandom.swift */; };
+		59175BD406E12275A6E4BD12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE0CC623580F1E19D164162 /* Assets.xcassets */; };
+		59C51078724E21C5A3EB0BE0 /* HotKeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6396F6AB0C898FFD713271A8 /* HotKeyCenter.swift */; };
+		5DFE367C439A033C199FFCF5 /* KeyCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E072EE8FA4EA05F0B83FB /* KeyCombo.swift */; };
+		61221E9F249BA2BA280CA647 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D40C9E164FD0E1544450C /* Preferences.swift */; };
+		669910EBB551A9770B4B8BEA /* SynthDSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425E6E0EB06E7559BC2D8573 /* SynthDSP.swift */; };
+		6872FF821FC7BEEE996E27C2 /* MechvibesConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B303F1D976506CFCD0160805 /* MechvibesConfig.swift */; };
+		70230720459890ABED00DC60 /* MechvibesBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72E882E185E2B62CEF865C /* MechvibesBank.swift */; };
+		767706343C0D5547C3766867 /* SystemVolumeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3FC546F84C7DE7CE13C11 /* SystemVolumeMonitor.swift */; };
+		78BEBF2CAA8B48F8F703FFCB /* MenuBarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14966159E69196BD56D5334 /* MenuBarPanel.swift */; };
+		7928FCE96AAD58F92421DE1B /* PackModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B810D2A1348B68C9DC255 /* PackModels.swift */; };
+		7987C2CCA372F6D29DA344EB /* KeyActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDADE79DEE9E7EC5BE7C9CF /* KeyActivity.swift */; };
+		879CB9D7D422BF5D83BE4A79 /* PacksSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E9DBD681748030C14A73AB /* PacksSettingsPane.swift */; };
+		88AC477A9CED6182CB7B43F7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B122FBEB5BAF1C4E9E0BA5 /* OnboardingView.swift */; };
+		9B6F37509749F636ACC1A581 /* SettingsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F4284EDD13F40A577D22BB /* SettingsRootView.swift */; };
+		9C5F2DD143EA86A345E88341 /* PermissionBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC354649498523AB9F521A3B /* PermissionBanner.swift */; };
+		A4B8560836ABECF2E0163787 /* PackLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53641D6D5712AC075CCCBAF3 /* PackLibrary.swift */; };
+		A6274E49F39C80F67B3FC33D /* MechvibesPackLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09ADDA4CF8949EB0403AC8 /* MechvibesPackLoader.swift */; };
+		ABD8C016FC8F623B5E93E5D3 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977415FDB136A13FA4F512F /* LaunchAtLogin.swift */; };
+		BAD112E425268405D9D3D002 /* ShortcutRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4342FC00CA2A73A3093B70 /* ShortcutRecorder.swift */; };
+		BBDB2EEA23AAB46AB9F26E60 /* KeycapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963CA867125A7E5A7A5705F7 /* KeycapView.swift */; };
+		BE9C4940E441EFF92E98A069 /* SwitchSynth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61ECD75DCCD942E4C3EFA /* SwitchSynth.swift */; };
+		C0169B0BEA8CBFED60B2C061 /* BuiltInPacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7416F572B251D5E3068805DE /* BuiltInPacks.swift */; };
+		CE9C1EB01BA57A1C053F2B83 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4B7695C1E0BABCE2221D7 /* MainView.swift */; };
+		CFFCD0CB035C3D6E7D2B15DD /* AudioDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D757AB1311627C218B61BD9 /* AudioDecoder.swift */; };
+		D2B2C76340C3B189458FAACF /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83850FCE66B326EEEB57CEF2 /* DesignSystem.swift */; };
+		DD866CDEBBDD03B543CA8A0B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F112AD82A0677B48985209 /* Log.swift */; };
+		E07FC5090133EF52DFCD29C9 /* SoundSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCAF7B6D70484CD7D0395E6 /* SoundSettingsPane.swift */; };
+		F0A1F7ACFE25BFC281AF80A2 /* SettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BDD5DEC9C1FD21EBA43877 /* SettingsOpener.swift */; };
+		F21E4108F325C976A734081F /* Packs in Resources */ = {isa = PBXBuildFile; fileRef = 87A32684607C79C0D701E959 /* Packs */; };
+		F4281B78B03461EC584F3FE4 /* SwitchRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867D282A06029FD50E8A436 /* SwitchRecipes.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06A77FED7F4C1E21BBAD18CC /* AboutSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsPane.swift; sourceTree = "<group>"; };
+		0A9D40C9E164FD0E1544450C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		17F112AD82A0677B48985209 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		1E72E882E185E2B62CEF865C /* MechvibesBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechvibesBank.swift; sourceTree = "<group>"; };
+		2A4342FC00CA2A73A3093B70 /* ShortcutRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorder.swift; sourceTree = "<group>"; };
+		2CB19100466FA13EFDFF396E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		2F4E506DC7842C97E13FE4B7 /* DockPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockPolicy.swift; sourceTree = "<group>"; };
+		305353B9B50D3C2836E966F3 /* KeyCodeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodeMap.swift; sourceTree = "<group>"; };
+		34E61ECD75DCCD942E4C3EFA /* SwitchSynth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchSynth.swift; sourceTree = "<group>"; };
+		3D757AB1311627C218B61BD9 /* AudioDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDecoder.swift; sourceTree = "<group>"; };
+		40A3FC546F84C7DE7CE13C11 /* SystemVolumeMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemVolumeMonitor.swift; sourceTree = "<group>"; };
+		425E6E0EB06E7559BC2D8573 /* SynthDSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthDSP.swift; sourceTree = "<group>"; };
+		49B122FBEB5BAF1C4E9E0BA5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		4B02C7D7B525E202AEED6B4B /* FolderWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderWatcher.swift; sourceTree = "<group>"; };
+		52BDD5DEC9C1FD21EBA43877 /* SettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpener.swift; sourceTree = "<group>"; };
+		5348B0BE5226AF1D37AC857F /* MenuBarPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPanelView.swift; sourceTree = "<group>"; };
+		53641D6D5712AC075CCCBAF3 /* PackLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackLibrary.swift; sourceTree = "<group>"; };
+		5867D282A06029FD50E8A436 /* SwitchRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchRecipes.swift; sourceTree = "<group>"; };
+		5A6C83FEBE085B2A2E21CC18 /* GeneralSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsPane.swift; sourceTree = "<group>"; };
+		6396F6AB0C898FFD713271A8 /* HotKeyCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyCenter.swift; sourceTree = "<group>"; };
+		6610DEECD16FEBEEE4149433 /* SeededRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededRandom.swift; sourceTree = "<group>"; };
+		69E9DBD681748030C14A73AB /* PacksSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacksSettingsPane.swift; sourceTree = "<group>"; };
+		6A58B5EF10CF8F2346E33D67 /* PermissionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionMonitor.swift; sourceTree = "<group>"; };
+		6DDADE79DEE9E7EC5BE7C9CF /* KeyActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyActivity.swift; sourceTree = "<group>"; };
+		71D25BCB80A63DF9A75ADB86 /* SoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEngine.swift; sourceTree = "<group>"; };
+		7416F572B251D5E3068805DE /* BuiltInPacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInPacks.swift; sourceTree = "<group>"; };
+		7EF43CEAFE6544D7BD0D7A70 /* SynthBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthBank.swift; sourceTree = "<group>"; };
+		83850FCE66B326EEEB57CEF2 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		850D12826DD4DBBBF5EFDA3D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		87A32684607C79C0D701E959 /* Packs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Packs; sourceTree = SOURCE_ROOT; };
+		94F4284EDD13F40A577D22BB /* SettingsRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRootView.swift; sourceTree = "<group>"; };
+		963CA867125A7E5A7A5705F7 /* KeycapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeycapView.swift; sourceTree = "<group>"; };
+		A7E4B7695C1E0BABCE2221D7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		ABECDFFC8868F08657DC2D3B /* ControlsCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsCluster.swift; sourceTree = "<group>"; };
+		AD3DC726E5BEEA1BBAAC1C85 /* SoundBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundBank.swift; sourceTree = "<group>"; };
+		AE09ADDA4CF8949EB0403AC8 /* MechvibesPackLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechvibesPackLoader.swift; sourceTree = "<group>"; };
+		AEA4E017D3AD550554E74812 /* KeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMonitor.swift; sourceTree = "<group>"; };
+		B1F27E5F0D41C9E70F5A97B3 /* ClackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClackApp.swift; sourceTree = "<group>"; };
+		B303F1D976506CFCD0160805 /* MechvibesConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechvibesConfig.swift; sourceTree = "<group>"; };
+		B66BC5543CF0281A78D3F109 /* PackImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackImporter.swift; sourceTree = "<group>"; };
+		BC354649498523AB9F521A3B /* PermissionBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionBanner.swift; sourceTree = "<group>"; };
+		BCEEDE838189010944B252F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C9DA69207E969F3ABC896C10 /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
+		D14966159E69196BD56D5334 /* MenuBarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPanel.swift; sourceTree = "<group>"; };
+		D20EF692E97086CFB7E8AD79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D977415FDB136A13FA4F512F /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
+		DCE0CC623580F1E19D164162 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E93B810D2A1348B68C9DC255 /* PackModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackModels.swift; sourceTree = "<group>"; };
+		EE64E1EA55793FF3ED9D0856 /* Clack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81E072EE8FA4EA05F0B83FB /* KeyCombo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombo.swift; sourceTree = "<group>"; };
+		FBCAF7B6D70484CD7D0395E6 /* SoundSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsPane.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2C6F14AD055C71D4AACF3499 /* Synth */ = {
+			isa = PBXGroup;
+			children = (
+				7416F572B251D5E3068805DE /* BuiltInPacks.swift */,
+				6610DEECD16FEBEEE4149433 /* SeededRandom.swift */,
+				5867D282A06029FD50E8A436 /* SwitchRecipes.swift */,
+				34E61ECD75DCCD942E4C3EFA /* SwitchSynth.swift */,
+				7EF43CEAFE6544D7BD0D7A70 /* SynthBank.swift */,
+				425E6E0EB06E7559BC2D8573 /* SynthDSP.swift */,
+			);
+			path = Synth;
+			sourceTree = "<group>";
+		};
+		6BED0089AFD9DC3DAB3EF7F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DCE0CC623580F1E19D164162 /* Assets.xcassets */,
+				BCEEDE838189010944B252F7 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		862954A4AC04337DE7A728F0 /* Packs */ = {
+			isa = PBXGroup;
+			children = (
+				3D757AB1311627C218B61BD9 /* AudioDecoder.swift */,
+				4B02C7D7B525E202AEED6B4B /* FolderWatcher.swift */,
+				1E72E882E185E2B62CEF865C /* MechvibesBank.swift */,
+				B303F1D976506CFCD0160805 /* MechvibesConfig.swift */,
+				AE09ADDA4CF8949EB0403AC8 /* MechvibesPackLoader.swift */,
+				B66BC5543CF0281A78D3F109 /* PackImporter.swift */,
+				53641D6D5712AC075CCCBAF3 /* PackLibrary.swift */,
+				E93B810D2A1348B68C9DC255 /* PackModels.swift */,
+			);
+			path = Packs;
+			sourceTree = "<group>";
+		};
+		BDBAE2A21D50AB603A5BF3D9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				06A77FED7F4C1E21BBAD18CC /* AboutSettingsPane.swift */,
+				5A6C83FEBE085B2A2E21CC18 /* GeneralSettingsPane.swift */,
+				6396F6AB0C898FFD713271A8 /* HotKeyCenter.swift */,
+				F81E072EE8FA4EA05F0B83FB /* KeyCombo.swift */,
+				D977415FDB136A13FA4F512F /* LaunchAtLogin.swift */,
+				69E9DBD681748030C14A73AB /* PacksSettingsPane.swift */,
+				0A9D40C9E164FD0E1544450C /* Preferences.swift */,
+				94F4284EDD13F40A577D22BB /* SettingsRootView.swift */,
+				2A4342FC00CA2A73A3093B70 /* ShortcutRecorder.swift */,
+				FBCAF7B6D70484CD7D0395E6 /* SoundSettingsPane.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C51C5A94CD640DDD840EF1AC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				49B122FBEB5BAF1C4E9E0BA5 /* OnboardingView.swift */,
+				BC354649498523AB9F521A3B /* PermissionBanner.swift */,
+				6A58B5EF10CF8F2346E33D67 /* PermissionMonitor.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C9B7D770335E889877DAD7B1 /* Clack */ = {
+			isa = PBXGroup;
+			children = (
+				D723A1E98AB837529E95231E /* App */,
+				E6211462F2AD9C14A7DB660B /* Engine */,
+				C51C5A94CD640DDD840EF1AC /* Onboarding */,
+				862954A4AC04337DE7A728F0 /* Packs */,
+				6BED0089AFD9DC3DAB3EF7F8 /* Resources */,
+				BDBAE2A21D50AB603A5BF3D9 /* Settings */,
+				F92CF2D1015A2D563F7491A9 /* Shell */,
+				2C6F14AD055C71D4AACF3499 /* Synth */,
+			);
+			path = Clack;
+			sourceTree = "<group>";
+		};
+		D26C8431297E744D527E8087 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE64E1EA55793FF3ED9D0856 /* Clack.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D723A1E98AB837529E95231E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D20EF692E97086CFB7E8AD79 /* AppDelegate.swift */,
+				B1F27E5F0D41C9E70F5A97B3 /* ClackApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E6211462F2AD9C14A7DB660B /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				850D12826DD4DBBBF5EFDA3D /* AppModel.swift */,
+				6DDADE79DEE9E7EC5BE7C9CF /* KeyActivity.swift */,
+				305353B9B50D3C2836E966F3 /* KeyCodeMap.swift */,
+				AEA4E017D3AD550554E74812 /* KeyMonitor.swift */,
+				17F112AD82A0677B48985209 /* Log.swift */,
+				AD3DC726E5BEEA1BBAAC1C85 /* SoundBank.swift */,
+				71D25BCB80A63DF9A75ADB86 /* SoundEngine.swift */,
+				40A3FC546F84C7DE7CE13C11 /* SystemVolumeMonitor.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		EFD4BD02A71D26617229F16F = {
+			isa = PBXGroup;
+			children = (
+				87A32684607C79C0D701E959 /* Packs */,
+				C9B7D770335E889877DAD7B1 /* Clack */,
+				D26C8431297E744D527E8087 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F92CF2D1015A2D563F7491A9 /* Shell */ = {
+			isa = PBXGroup;
+			children = (
+				ABECDFFC8868F08657DC2D3B /* ControlsCluster.swift */,
+				83850FCE66B326EEEB57CEF2 /* DesignSystem.swift */,
+				2F4E506DC7842C97E13FE4B7 /* DockPolicy.swift */,
+				963CA867125A7E5A7A5705F7 /* KeycapView.swift */,
+				A7E4B7695C1E0BABCE2221D7 /* MainView.swift */,
+				2CB19100466FA13EFDFF396E /* MainWindowController.swift */,
+				D14966159E69196BD56D5334 /* MenuBarPanel.swift */,
+				5348B0BE5226AF1D37AC857F /* MenuBarPanelView.swift */,
+				52BDD5DEC9C1FD21EBA43877 /* SettingsOpener.swift */,
+				C9DA69207E969F3ABC896C10 /* StatusItemController.swift */,
+			);
+			path = Shell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3EE56AD20B01F7D1814B0659 /* Clack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C3B2021DE6F166DDF3990F5 /* Build configuration list for PBXNativeTarget "Clack" */;
+			buildPhases = (
+				A82593EA90E52C85661DF4D7 /* Sources */,
+				5F8C75686B47F62D3674F953 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clack;
+			packageProductDependencies = (
+			);
+			productName = Clack;
+			productReference = EE64E1EA55793FF3ED9D0856 /* Clack.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		394F8EA3F7EB7669D1598E58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3EE56AD20B01F7D1814B0659 = {
+						DevelopmentTeam = CH6CSBA54G;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 360323F869A194D3C9928E8F /* Build configuration list for PBXProject "Clack" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = EFD4BD02A71D26617229F16F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D26C8431297E744D527E8087 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3EE56AD20B01F7D1814B0659 /* Clack */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F8C75686B47F62D3674F953 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59175BD406E12275A6E4BD12 /* Assets.xcassets in Resources */,
+				F21E4108F325C976A734081F /* Packs in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A82593EA90E52C85661DF4D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C0A996A67D3F9EBAA83D729 /* AboutSettingsPane.swift in Sources */,
+				52E0C05C96647ADFB6C1E208 /* AppDelegate.swift in Sources */,
+				5326958A3094EDE402D0ED3B /* AppModel.swift in Sources */,
+				CFFCD0CB035C3D6E7D2B15DD /* AudioDecoder.swift in Sources */,
+				C0169B0BEA8CBFED60B2C061 /* BuiltInPacks.swift in Sources */,
+				1B1DA215F15154F3F0F90312 /* ClackApp.swift in Sources */,
+				2BFE4DA63A38555C5D9F77F1 /* ControlsCluster.swift in Sources */,
+				D2B2C76340C3B189458FAACF /* DesignSystem.swift in Sources */,
+				405AE445C918BEAE904E43ED /* DockPolicy.swift in Sources */,
+				384E66CB4A585C925443E20B /* FolderWatcher.swift in Sources */,
+				118B314E998683DC6AFD605C /* GeneralSettingsPane.swift in Sources */,
+				59C51078724E21C5A3EB0BE0 /* HotKeyCenter.swift in Sources */,
+				7987C2CCA372F6D29DA344EB /* KeyActivity.swift in Sources */,
+				46EAC5AE069CACF4330DAECF /* KeyCodeMap.swift in Sources */,
+				5DFE367C439A033C199FFCF5 /* KeyCombo.swift in Sources */,
+				2B353D49A7D176385DA1DDF7 /* KeyMonitor.swift in Sources */,
+				BBDB2EEA23AAB46AB9F26E60 /* KeycapView.swift in Sources */,
+				ABD8C016FC8F623B5E93E5D3 /* LaunchAtLogin.swift in Sources */,
+				DD866CDEBBDD03B543CA8A0B /* Log.swift in Sources */,
+				CE9C1EB01BA57A1C053F2B83 /* MainView.swift in Sources */,
+				2001EDCC1BDF080A75A1A72E /* MainWindowController.swift in Sources */,
+				70230720459890ABED00DC60 /* MechvibesBank.swift in Sources */,
+				6872FF821FC7BEEE996E27C2 /* MechvibesConfig.swift in Sources */,
+				A6274E49F39C80F67B3FC33D /* MechvibesPackLoader.swift in Sources */,
+				78BEBF2CAA8B48F8F703FFCB /* MenuBarPanel.swift in Sources */,
+				26616757D3A7E66367D1B896 /* MenuBarPanelView.swift in Sources */,
+				88AC477A9CED6182CB7B43F7 /* OnboardingView.swift in Sources */,
+				16B0A545EACCA393B8DBF3B9 /* PackImporter.swift in Sources */,
+				A4B8560836ABECF2E0163787 /* PackLibrary.swift in Sources */,
+				7928FCE96AAD58F92421DE1B /* PackModels.swift in Sources */,
+				879CB9D7D422BF5D83BE4A79 /* PacksSettingsPane.swift in Sources */,
+				9C5F2DD143EA86A345E88341 /* PermissionBanner.swift in Sources */,
+				3C8230EF865B2F322B779EBC /* PermissionMonitor.swift in Sources */,
+				61221E9F249BA2BA280CA647 /* Preferences.swift in Sources */,
+				5491B8E9869AA3FDA3AB5F82 /* SeededRandom.swift in Sources */,
+				F0A1F7ACFE25BFC281AF80A2 /* SettingsOpener.swift in Sources */,
+				9B6F37509749F636ACC1A581 /* SettingsRootView.swift in Sources */,
+				BAD112E425268405D9D3D002 /* ShortcutRecorder.swift in Sources */,
+				4A400C75F8DC14A8AE00FD68 /* SoundBank.swift in Sources */,
+				43E92367EB96E047B47841AA /* SoundEngine.swift in Sources */,
+				E07FC5090133EF52DFCD29C9 /* SoundSettingsPane.swift in Sources */,
+				1BC699E8E9B3ED1421678269 /* StatusItemController.swift in Sources */,
+				F4281B78B03461EC584F3FE4 /* SwitchRecipes.swift in Sources */,
+				BE9C4940E441EFF92E98A069 /* SwitchSynth.swift in Sources */,
+				531CC4FE1E06EA6E3F600333 /* SynthBank.swift in Sources */,
+				669910EBB551A9770B4B8BEA /* SynthDSP.swift in Sources */,
+				767706343C0D5547C3766867 /* SystemVolumeMonitor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		316C7583BBDC18DBDF25A7ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = CH6CSBA54G;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Clack/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
+				PRODUCT_NAME = Clack;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		351D672567FCDF61E8A740F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		52A59E16E2712989AFE63F67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		DB64FA82365AE5B6F9118394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = CH6CSBA54G;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Clack/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
+				PRODUCT_NAME = Clack;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C3B2021DE6F166DDF3990F5 /* Build configuration list for PBXNativeTarget "Clack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB64FA82365AE5B6F9118394 /* Debug */,
+				316C7583BBDC18DBDF25A7ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		360323F869A194D3C9928E8F /* Build configuration list for PBXProject "Clack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				351D672567FCDF61E8A740F0 /* Debug */,
+				52A59E16E2712989AFE63F67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 394F8EA3F7EB7669D1598E58 /* Project object */;
+}
