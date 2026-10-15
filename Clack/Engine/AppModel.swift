@@ -271,11 +271,21 @@ enum ListeningStatus: Sendable { case listening, muted, noAccess }
             configuration.arguments = ["--relaunch"]
             do {
                 _ = try await NSWorkspace.shared.openApplication(at: Bundle.main.bundleURL, configuration: configuration)
-                NSApp.terminate(nil)
+                quitClosingSheets()
             } catch {
                 Log.ui.error("Relaunch failed: \(error.localizedDescription, privacy: .public)")
             }
         }
+    }
+
+    /// AppKit refuses to quit while a sheet is attached (System Settings' "Quit & Reopen"
+    /// after granting Input Monitoring hits this during onboarding). Close sheets first.
+    func quitClosingSheets() {
+        showOnboarding = false
+        for window in NSApp.windows {
+            if let sheet = window.attachedSheet { window.endSheet(sheet) }
+        }
+        DispatchQueue.main.async { NSApp.terminate(nil) }
     }
 
     // MARK: - Private

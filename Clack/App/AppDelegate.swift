@@ -39,6 +39,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         guard !isDuplicateInstance else { return }
 
+        // Route quit requests (System Settings' "Quit & Reopen", Activity Monitor, scripts)
+        // through quitClosingSheets so an open onboarding sheet can't block them.
+        NSAppleEventManager.shared().setEventHandler(
+            self, andSelector: #selector(handleQuitEvent(_:withReply:)),
+            forEventClass: AEEventClass(kCoreEventClass), andEventID: AEEventID(kAEQuitApplication))
+
         let model = AppModel.shared
         model.requestMainWindow = { MainWindowController.shared.show() }
         model.start()
@@ -71,6 +77,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         guard !isDuplicateInstance else { return false }
         MainWindowController.shared.show()
         return false
+    }
+
+    @objc private func handleQuitEvent(_ event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
+        AppModel.shared.quitClosingSheets()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

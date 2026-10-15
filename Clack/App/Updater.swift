@@ -188,6 +188,6 @@ import AppKit
             alert("Update failed", error.localizedDescription)
             return
         }
-        NSApp.terminate(nil)
+        AppModel.shared.quitClosingSheets()
     }
 }

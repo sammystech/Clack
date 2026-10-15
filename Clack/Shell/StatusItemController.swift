@@ -137,5 +137,5 @@ final class StatusItemController: NSObject {
     @objc private func openPacksFolder() { model.openCustomPacksFolder() }
     @objc private func openSettings() { SettingsOpener.open() }
     @objc private func checkForUpdates() { Updater.shared.checkNow() }
-    @objc private func quit() { NSApp.terminate(nil) }
+    @objc private func quit() { model.quitClosingSheets() }
 }
