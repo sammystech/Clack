@@ -26,13 +26,17 @@ import SwiftUI
             panel.title = "Updating Clack"
             panel.titlebarAppearsTransparent = true
             panel.isFloatingPanel = true
+            panel.level = .floating
+            // Clack is a menu-bar app and usually not frontmost when an update starts,
+            // and panels hide on deactivate by default, so keep it visible regardless.
+            panel.hidesOnDeactivate = false
+            panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
             panel.isReleasedWhenClosed = false
             panel.contentView = NSHostingView(rootView: UpdateProgressView(progress: self))
             self.panel = panel
         }
         panel?.center()
-        NSApp.activate()
-        panel?.makeKeyAndOrderFront(nil)
+        panel?.orderFrontRegardless()
     }
 
     func cancel() {

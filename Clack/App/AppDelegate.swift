@@ -52,6 +52,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         DockPolicy.start()
         Updater.shared.startBackgroundChecks()
         if UserDefaults.standard.bool(forKey: "speakKeys") { KeySpeaker.shared.prepare() }
+        #if DEBUG
+        if CommandLine.arguments.contains("--preview-update-ui") {
+            UpdateProgress.shared.begin(version: "9.9") {}
+            UpdateProgress.shared.fraction = 0.42
+        }
+        #endif
 
         powerOffObserver = NSWorkspace.shared.notificationCenter.addObserver(
             forName: NSWorkspace.willPowerOffNotification, object: nil, queue: .main
