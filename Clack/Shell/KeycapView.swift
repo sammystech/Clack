@@ -13,6 +13,8 @@ struct KeycapView: View {
         self.scale = scale
     }
 
+    @AppStorage("showKeysOnKeycap") private var showKeys = true
+
     private var isMuted: Bool { model.preferences.isMuted }
 
     private var label: String {
@@ -20,7 +22,7 @@ struct KeycapView: View {
         switch model.packState {
         case .loading: return "Loading…"
         case .failed: return "Failed"
-        case .ready: return "Clack"
+        case .ready: return (showKeys ? model.keyActivity.lastKey : nil) ?? "Clack"
         }
     }
 

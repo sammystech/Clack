@@ -134,60 +134,149 @@ import AppKit
 
     // MARK: Download + install
 
+    private var downloadTask: URLSessionDownloadTask?
+
     private func download(_ url: URL, version: String) async {
+        // Clack has to be able to replace its own bundle; catch that before downloading.
+        if let problem = Self.installLocationProblem() {
+            alert("Can't update Clack here", problem)
+            return
+        }
+        let progress = UpdateProgress.shared
+        progress.begin(version: version) { [weak self] in self?.downloadTask?.cancel() }
+
         do {
-            let (tmp, _) = try await URLSession.shared.download(from: url)
-            let dest = FileManager.default.temporaryDirectory.appendingPathComponent("Clack-\(version).dmg")
-            try? FileManager.default.removeItem(at: dest)
-            try FileManager.default.moveItem(at: tmp, to: dest)
-            install(dmg: dest)
+            let dmg = try await fetch(url, version: version) { fraction in
+                Task { @MainActor in progress.fraction = fraction }
+            }
+            progress.phase = .installing
+            try install(dmg: dmg)
+        } catch let error as URLError where error.code == .cancelled {
+            progress.close()
         } catch {
-            alert("Download failed", error.localizedDescription)
+            progress.close()
+            alert("Update failed", error.localizedDescription)
         }
     }
 
-    /// Hands the swap to a detached script: we can't replace our own bundle
-    /// while running, so the script waits for us to quit, copies, and reopens.
-    private func install(dmg: URL) {
-        let appPath = Bundle.main.bundlePath
+    /// Downloads with byte-level progress into a stable temp path.
+    private func fetch(_ url: URL, version: String, onProgress: @escaping @Sendable (Double) -> Void) async throws -> URL {
+        let dest = FileManager.default.temporaryDirectory.appendingPathComponent("Clack-\(version).dmg")
+        let delegate = DownloadDelegate(destination: dest, onProgress: onProgress)
+        let session = URLSession(configuration: .ephemeral, delegate: delegate, delegateQueue: nil)
+        defer { session.finishTasksAndInvalidate() }
+        return try await withCheckedThrowingContinuation { continuation in
+            delegate.continuation = continuation
+            let task = session.downloadTask(with: url)
+            downloadTask = task
+            task.resume()
+        }
+    }
+
+    /// nil when this copy can update itself in place, else why not.
+    private static func installLocationProblem() -> String? {
+        let path = Bundle.main.bundlePath
+        if path.contains("/AppTranslocation/") || path.hasPrefix("/Volumes/") {
+            return "Clack is running from the download, not your Applications folder. Drag Clack into Applications, open it from there, then check for updates again."
+        }
+        let parent = (path as NSString).deletingLastPathComponent
+        if !FileManager.default.isWritableFile(atPath: parent) {
+            return "Clack can't write to \(parent). Move Clack into your Applications folder and try again."
+        }
+        return nil
+    }
+
+    /// Hands the swap to a detached script: we can't replace our own bundle while running,
+    /// so the script waits for this process to exit, verifies the new build, swaps it in
+    /// atomically (the old copy is restored on any failure), and reopens Clack.
+    private func install(dmg: URL) throws {
+        let logDir = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Logs/Clack")
+        try? FileManager.default.createDirectory(at: logDir, withIntermediateDirectories: true)
         let script = """
         #!/bin/bash
+        exec >>"\(logDir.path)/update.log" 2>&1
+        echo "== $(date) update from \(currentVersion)"
         DMG="\(dmg.path)"
-        APP="\(appPath)"
+        APP="\(Bundle.main.bundlePath)"
+        PID=\(ProcessInfo.processInfo.processIdentifier)
         MOUNT=$(mktemp -d /tmp/clack-update-XXXXXX)
 
-        # Wait for the running copy to exit (max ~10s).
-        for _ in $(seq 1 50); do
-          pgrep -f "$APP/Contents/MacOS/" >/dev/null || break
-          sleep 0.2
-        done
+        # Wait for the running copy to exit (max ~20s).
+        for _ in $(seq 1 100); do kill -0 "$PID" 2>/dev/null || break; sleep 0.2; done
 
-        hdiutil attach "$DMG" -nobrowse -quiet -mountpoint "$MOUNT"
+        reopen() { hdiutil detach "$MOUNT" -quiet -force 2>/dev/null; rm -rf "$MOUNT" "$DMG"; open "$APP"; exit "$1"; }
+
+        hdiutil attach "$DMG" -nobrowse -noautoopen -quiet -mountpoint "$MOUNT" || { echo "attach failed"; reopen 1; }
         NEW=$(find "$MOUNT" -maxdepth 1 -name "*.app" -print -quit)
-        # Only install a build that is intact and signed by the same Developer ID team.
-        if [ -n "$NEW" ] \\
-           && codesign --verify --deep --strict "$NEW" 2>/dev/null \\
-           && codesign -dv "$NEW" 2>&1 | grep -q "TeamIdentifier=\(Self.teamID)"; then
-          rm -rf "$APP"
-          cp -R "$NEW" "$APP"
-          xattr -dr com.apple.quarantine "$APP" 2>/dev/null || true
+        [ -n "$NEW" ] || { echo "no app in DMG"; reopen 1; }
+        codesign --verify --deep --strict "$NEW" || { echo "signature invalid"; reopen 1; }
+        codesign -dv "$NEW" 2>&1 | grep -q "TeamIdentifier=\(Self.teamID)" || { echo "wrong team"; reopen 1; }
+
+        STAGE="$APP.updating"
+        rm -rf "$STAGE" "$APP.old"
+        ditto "$NEW" "$STAGE" || { echo "copy failed"; rm -rf "$STAGE"; reopen 1; }
+        xattr -dr com.apple.quarantine "$STAGE" 2>/dev/null
+        mv "$APP" "$APP.old" || { echo "could not move old app"; rm -rf "$STAGE"; reopen 1; }
+        if mv "$STAGE" "$APP"; then
+          rm -rf "$APP.old"
+          echo "installed $(defaults read "$APP/Contents/Info" CFBundleShortVersionString)"
+        else
+          echo "swap failed, restoring"; mv "$APP.old" "$APP"
         fi
-        hdiutil detach "$MOUNT" -quiet || true
-        rm -rf "$MOUNT" "$DMG"
-        open "$APP"
+        reopen 0
         """
         let path = FileManager.default.temporaryDirectory.appendingPathComponent("clack-update.sh")
-        do {
-            try script.write(to: path, atomically: true, encoding: .utf8)
-            try FileManager.default.setAttributes([.posixPermissions: 0o755], ofItemAtPath: path.path)
-            let task = Process()
-            task.executableURL = URL(fileURLWithPath: "/bin/bash")
-            task.arguments = [path.path]
-            try task.run()
-        } catch {
-            alert("Update failed", error.localizedDescription)
-            return
+        try script.write(to: path, atomically: true, encoding: .utf8)
+        try FileManager.default.setAttributes([.posixPermissions: 0o755], ofItemAtPath: path.path)
+
+        // Double-fork through nohup so the script outlives this process.
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: "/bin/bash")
+        task.arguments = ["-c", "nohup /bin/bash \"$0\" >/dev/null 2>&1 &", path.path]
+        try task.run()
+        task.waitUntilExit()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            AppModel.shared.quitClosingSheets()
         }
-        AppModel.shared.quitClosingSheets()
+    }
+}
+
+/// Bridges URLSession's delegate callbacks (progress + finished file) to async/await.
+private final class DownloadDelegate: NSObject, URLSessionDownloadDelegate, @unchecked Sendable {
+    let destination: URL
+    let onProgress: @Sendable (Double) -> Void
+    var continuation: CheckedContinuation<URL, Error>?   // touched only on the session's serial queue
+
+    init(destination: URL, onProgress: @escaping @Sendable (Double) -> Void) {
+        self.destination = destination
+        self.onProgress = onProgress
+    }
+
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64,
+                    totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        guard totalBytesExpectedToWrite > 0 else { return }
+        onProgress(Double(totalBytesWritten) / Double(totalBytesExpectedToWrite))
+    }
+
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        // The temp file is deleted when this returns, so move it now.
+        let fm = FileManager.default
+        if let http = downloadTask.response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
+            continuation?.resume(throwing: URLError(.badServerResponse)); continuation = nil; return
+        }
+        do {
+            try? fm.removeItem(at: destination)
+            try fm.moveItem(at: location, to: destination)
+            continuation?.resume(returning: destination)
+        } catch {
+            continuation?.resume(throwing: error)
+        }
+        continuation = nil
+    }
+
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let error { continuation?.resume(throwing: error) }
+        continuation = nil
     }
 }

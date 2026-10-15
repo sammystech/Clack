@@ -114,6 +114,7 @@ struct PacksSettingsPane: View {
                     .foregroundStyle(.secondary)
 
                 HStack(spacing: DS.Space.s) {
+                    Button("Add Sound…", action: chooseSound)
                     Button("Add Pack…", action: choosePacks)
                     Button("Reload Packs") { model.reloadPacks() }
                     Button("Random Pack") { model.randomPack() }
@@ -240,6 +241,37 @@ struct PacksSettingsPane: View {
         importPacks(panel.urls)
     }
 
+    /// One audio file becomes a pack that plays it on every key, under a name the user picks.
+    private func chooseSound() {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = true
+        panel.canChooseDirectories = false
+        panel.allowsMultipleSelection = false
+        panel.allowedContentTypes = [.audio]
+        panel.prompt = "Choose"
+        panel.message = "Pick a short sound to play on every key."
+        guard panel.runModal() == .OK, let file = panel.url else { return }
+
+        let alert = NSAlert()
+        alert.messageText = "Name this sound"
+        alert.informativeText = "It shows up in your pack list under this name."
+        let field = NSTextField(string: file.deletingPathExtension().lastPathComponent)
+        field.frame = NSRect(x: 0, y: 0, width: 240, height: 24)
+        alert.accessoryView = field
+        alert.addButton(withTitle: "Add")
+        alert.addButton(withTitle: "Cancel")
+        alert.window.initialFirstResponder = field
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        let name = field.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        do {
+            let folder = try SingleSoundPack.make(from: file, name: name.isEmpty ? "My Sound" : name)
+            importPacks([folder])
+        } catch {
+            importError = error.localizedDescription
+        }
+    }
+
     private func importPacks(_ urls: [URL]) {
         guard !isImporting else { return }
         isImporting = true
@@ -252,6 +284,7 @@ struct PacksSettingsPane: View {
                 importError = error
                 return
             }
+            urls.forEach { if $0.path.hasPrefix(SingleSoundPack.stagingRoot.path) { try? FileManager.default.removeItem(at: $0) } }
             importSuccess = urls.count == 1
                 ? "Added \(urls[0].deletingPathExtension().lastPathComponent)."
                 : "Added \(urls.count) packs."

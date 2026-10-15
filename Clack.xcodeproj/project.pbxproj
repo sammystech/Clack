@@ -45,10 +45,14 @@
 		A4B8560836ABECF2E0163787 /* PackLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53641D6D5712AC075CCCBAF3 /* PackLibrary.swift */; };
 		A6274E49F39C80F67B3FC33D /* MechvibesPackLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09ADDA4CF8949EB0403AC8 /* MechvibesPackLoader.swift */; };
 		ABD8C016FC8F623B5E93E5D3 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977415FDB136A13FA4F512F /* LaunchAtLogin.swift */; };
+		B42858DFABB4E713306DDF7F /* SingleSoundPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F3A9FAF24DF1AEEA5CED7 /* SingleSoundPack.swift */; };
 		BAD112E425268405D9D3D002 /* ShortcutRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4342FC00CA2A73A3093B70 /* ShortcutRecorder.swift */; };
 		BBDB2EEA23AAB46AB9F26E60 /* KeycapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963CA867125A7E5A7A5705F7 /* KeycapView.swift */; };
+		BCFBF6AFB614303B9CDD6D91 /* KeySpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773324F8D029CB2A9AADB9A /* KeySpeaker.swift */; };
 		BE9C4940E441EFF92E98A069 /* SwitchSynth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61ECD75DCCD942E4C3EFA /* SwitchSynth.swift */; };
 		C0169B0BEA8CBFED60B2C061 /* BuiltInPacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7416F572B251D5E3068805DE /* BuiltInPacks.swift */; };
+		CA8CB589A57CED720A17DED8 /* UpdateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8AA557FD09A6A6F05B1EFF /* UpdateProgress.swift */; };
+		CC313569D3EA21D280C4F59F /* KeyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6310B81FDAC4C1E3701555A /* KeyLabels.swift */; };
 		CE9C1EB01BA57A1C053F2B83 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4B7695C1E0BABCE2221D7 /* MainView.swift */; };
 		CFFCD0CB035C3D6E7D2B15DD /* AudioDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D757AB1311627C218B61BD9 /* AudioDecoder.swift */; };
 		D2B2C76340C3B189458FAACF /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83850FCE66B326EEEB57CEF2 /* DesignSystem.swift */; };
@@ -60,8 +64,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		012F3A9FAF24DF1AEEA5CED7 /* SingleSoundPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSoundPack.swift; sourceTree = "<group>"; };
 		06A77FED7F4C1E21BBAD18CC /* AboutSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsPane.swift; sourceTree = "<group>"; };
 		0A9D40C9E164FD0E1544450C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		1773324F8D029CB2A9AADB9A /* KeySpeaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySpeaker.swift; sourceTree = "<group>"; };
 		17F112AD82A0677B48985209 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		1E72E882E185E2B62CEF865C /* MechvibesBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechvibesBank.swift; sourceTree = "<group>"; };
 		239E07D857F6D0D66219E3BA /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		87A32684607C79C0D701E959 /* Packs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Packs; sourceTree = SOURCE_ROOT; };
 		94F4284EDD13F40A577D22BB /* SettingsRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRootView.swift; sourceTree = "<group>"; };
 		963CA867125A7E5A7A5705F7 /* KeycapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeycapView.swift; sourceTree = "<group>"; };
+		A6310B81FDAC4C1E3701555A /* KeyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLabels.swift; sourceTree = "<group>"; };
 		A7E4B7695C1E0BABCE2221D7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		ABECDFFC8868F08657DC2D3B /* ControlsCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsCluster.swift; sourceTree = "<group>"; };
 		AD3DC726E5BEEA1BBAAC1C85 /* SoundBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundBank.swift; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 		D20EF692E97086CFB7E8AD79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D977415FDB136A13FA4F512F /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		DCE0CC623580F1E19D164162 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD8AA557FD09A6A6F05B1EFF /* UpdateProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProgress.swift; sourceTree = "<group>"; };
 		E93B810D2A1348B68C9DC255 /* PackModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackModels.swift; sourceTree = "<group>"; };
 		EE64E1EA55793FF3ED9D0856 /* Clack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F81E072EE8FA4EA05F0B83FB /* KeyCombo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombo.swift; sourceTree = "<group>"; };
@@ -148,6 +156,7 @@
 				B66BC5543CF0281A78D3F109 /* PackImporter.swift */,
 				53641D6D5712AC075CCCBAF3 /* PackLibrary.swift */,
 				E93B810D2A1348B68C9DC255 /* PackModels.swift */,
+				012F3A9FAF24DF1AEEA5CED7 /* SingleSoundPack.swift */,
 			);
 			path = Packs;
 			sourceTree = "<group>";
@@ -207,6 +216,7 @@
 			children = (
 				D20EF692E97086CFB7E8AD79 /* AppDelegate.swift */,
 				B1F27E5F0D41C9E70F5A97B3 /* ClackApp.swift */,
+				DD8AA557FD09A6A6F05B1EFF /* UpdateProgress.swift */,
 				239E07D857F6D0D66219E3BA /* Updater.swift */,
 			);
 			path = App;
@@ -218,7 +228,9 @@
 				850D12826DD4DBBBF5EFDA3D /* AppModel.swift */,
 				6DDADE79DEE9E7EC5BE7C9CF /* KeyActivity.swift */,
 				305353B9B50D3C2836E966F3 /* KeyCodeMap.swift */,
+				A6310B81FDAC4C1E3701555A /* KeyLabels.swift */,
 				AEA4E017D3AD550554E74812 /* KeyMonitor.swift */,
+				1773324F8D029CB2A9AADB9A /* KeySpeaker.swift */,
 				17F112AD82A0677B48985209 /* Log.swift */,
 				AD3DC726E5BEEA1BBAAC1C85 /* SoundBank.swift */,
 				71D25BCB80A63DF9A75ADB86 /* SoundEngine.swift */,
@@ -340,7 +352,9 @@
 				7987C2CCA372F6D29DA344EB /* KeyActivity.swift in Sources */,
 				46EAC5AE069CACF4330DAECF /* KeyCodeMap.swift in Sources */,
 				5DFE367C439A033C199FFCF5 /* KeyCombo.swift in Sources */,
+				CC313569D3EA21D280C4F59F /* KeyLabels.swift in Sources */,
 				2B353D49A7D176385DA1DDF7 /* KeyMonitor.swift in Sources */,
+				BCFBF6AFB614303B9CDD6D91 /* KeySpeaker.swift in Sources */,
 				BBDB2EEA23AAB46AB9F26E60 /* KeycapView.swift in Sources */,
 				ABD8C016FC8F623B5E93E5D3 /* LaunchAtLogin.swift in Sources */,
 				DD866CDEBBDD03B543CA8A0B /* Log.swift in Sources */,
@@ -363,6 +377,7 @@
 				F0A1F7ACFE25BFC281AF80A2 /* SettingsOpener.swift in Sources */,
 				9B6F37509749F636ACC1A581 /* SettingsRootView.swift in Sources */,
 				BAD112E425268405D9D3D002 /* ShortcutRecorder.swift in Sources */,
+				B42858DFABB4E713306DDF7F /* SingleSoundPack.swift in Sources */,
 				4A400C75F8DC14A8AE00FD68 /* SoundBank.swift in Sources */,
 				43E92367EB96E047B47841AA /* SoundEngine.swift in Sources */,
 				E07FC5090133EF52DFCD29C9 /* SoundSettingsPane.swift in Sources */,
@@ -372,6 +387,7 @@
 				531CC4FE1E06EA6E3F600333 /* SynthBank.swift in Sources */,
 				669910EBB551A9770B4B8BEA /* SynthDSP.swift in Sources */,
 				767706343C0D5547C3766867 /* SystemVolumeMonitor.swift in Sources */,
+				CA8CB589A57CED720A17DED8 /* UpdateProgress.swift in Sources */,
 				8FBAF24F1EE3E45632E90ECA /* Updater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +402,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CH6CSBA54G;
 				ENABLE_APP_SANDBOX = NO;
@@ -394,7 +410,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Clack/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
 				PRODUCT_NAME = Clack;
 				SDKROOT = macosx;
@@ -529,7 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CH6CSBA54G;
 				ENABLE_APP_SANDBOX = NO;
@@ -537,7 +553,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Clack/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
 				PRODUCT_NAME = Clack;
 				SDKROOT = macosx;

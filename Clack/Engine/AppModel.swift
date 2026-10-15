@@ -63,7 +63,18 @@ enum ListeningStatus: Sendable { case listening, muted, noAccess }
         self.engine = engine
         self.keyMonitor = KeyMonitor { [engine, activity] event in
             // Key-tap thread: sound is scheduled synchronously; only transitions hop to main.
-            guard let transition = engine.handle(event) else { return }
+            let transition = engine.handle(event)
+            if AppModel.isLabelPress(event), let label = KeyLabels.label(forKeyCode: event.keyCode) {
+                DispatchQueue.main.async {
+                    MainActor.assumeIsolated {
+                        activity.show(label)
+                        if UserDefaults.standard.bool(forKey: "speakKeys") {
+                            KeySpeaker.shared.speak(label, volume: Float(AppModel.shared.preferences.volume))
+                        }
+                    }
+                }
+            }
+            guard let transition else { return }
             let pressed = transition == .pressed
             let isCapsLock = event.kind == .flagsChanged && event.keyCode == AppModel.capsLockKeyCode
             DispatchQueue.main.async {
@@ -77,6 +88,18 @@ enum ListeningStatus: Sendable { case listening, muted, noAccess }
                     }
                 }
             }
+        }
+    }
+
+    /// A fresh key press worth labeling: key-down (not auto-repeat), or a modifier going down.
+    nonisolated static func isLabelPress(_ event: KeyEvent) -> Bool {
+        switch event.kind {
+        case .down: return !event.isAutorepeat
+        case .up: return false
+        case .flagsChanged:
+            if event.keyCode == capsLockKeyCode { return true }
+            guard let mask = KeyCodeMap.modifierMask(forKeyCode: event.keyCode) else { return false }
+            return event.flags & mask != 0
         }
     }
 

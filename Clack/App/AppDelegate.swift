@@ -51,6 +51,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItemController = StatusItemController(model: model)
         DockPolicy.start()
         Updater.shared.startBackgroundChecks()
+        if UserDefaults.standard.bool(forKey: "speakKeys") { KeySpeaker.shared.prepare() }
 
         powerOffObserver = NSWorkspace.shared.notificationCenter.addObserver(
             forName: NSWorkspace.willPowerOffNotification, object: nil, queue: .main

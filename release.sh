@@ -57,9 +57,18 @@ else
     <key>teamID</key><string>$TEAM_ID</string>
 </dict></plist>
 PLIST
-    xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportOptionsPlist "$BUILD_DIR/ExportOptions.plist" \
-        -exportPath "$BUILD_DIR/upload-receipt" -allowProvisioningUpdates > "$BUILD_DIR/export.log" 2>&1 \
-        || { grep -iE "error" "$BUILD_DIR/export.log" | sort -u | head -20; die "Export/upload failed. Log: $BUILD_DIR/export.log"; }
+    # Apple's timestamp server has short outages; retry those for up to ~5 minutes.
+    for try in 1 2 3 4 5 6 7 8 9 10; do
+        if xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportOptionsPlist "$BUILD_DIR/ExportOptions.plist" \
+            -exportPath "$BUILD_DIR/upload-receipt" -allowProvisioningUpdates > "$BUILD_DIR/export.log" 2>&1; then
+            break
+        fi
+        if grep -qE "timestamp service is not available|timestamp was expected" "$BUILD_DIR/export.log" && [ "$try" -lt 10 ]; then
+            echo "  Apple's timestamp server is down; retrying in 30s ($try/10)"
+            rm -rf "$BUILD_DIR/upload-receipt"; sleep 30; continue
+        fi
+        grep -iE "error" "$BUILD_DIR/export.log" | sort -u | head -20; die "Export/upload failed. Log: $BUILD_DIR/export.log"
+    done
     echo "  uploaded; waiting for Apple"
 fi
 

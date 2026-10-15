@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SoundSettingsPane: View {
+    @AppStorage("showKeysOnKeycap") private var showKeys = true
+    @AppStorage("speakKeys") private var speakKeys = false
     private var model: AppModel { .shared }
 
     var body: some View {
@@ -43,6 +45,15 @@ struct SoundSettingsPane: View {
                     Text("Keep loudness constant")
                     Text("Makes Clack louder when your Mac's volume is low, up to 4 times.")
                 }
+                Toggle(isOn: $showKeys) {
+                    Text("Show keys on the keycap")
+                    Text("The keycap shows each key you press.")
+                }
+                Toggle(isOn: $speakKeys) {
+                    Text("Say keys out loud")
+                    Text("Speaks every key you press. Fast typing overlaps. Just for fun.")
+                }
+                .onChange(of: speakKeys) { _, on in if on { KeySpeaker.shared.prepare() } }
             }
         }
         .formStyle(.grouped)
