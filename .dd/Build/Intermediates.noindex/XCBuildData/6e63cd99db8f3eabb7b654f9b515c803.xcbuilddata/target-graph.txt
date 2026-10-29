@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'Clack' in project 'Clack' (no dependencies)
