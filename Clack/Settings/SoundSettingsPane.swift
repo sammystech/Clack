@@ -7,28 +7,9 @@ struct SoundSettingsPane: View {
 
     var body: some View {
         @Bindable var preferences = model.preferences
-        let percent = Int((preferences.volume * 100).rounded())
 
-        Form {
-            Section("Volume") {
-                LabeledContent("Volume") {
-                    HStack(spacing: 10) {
-                        Slider(value: $preferences.volume, in: 0...model.maxVolume) {   // Preferences snaps to 5%; no tick marks
-                            Text("Volume")
-                        }
-                        .labelsHidden()
-                        .tint(preferences.volume > 1 ? DS.Palette.boostTint : DS.Palette.accent)
-                        .accessibilityValue("\(percent)%")
-                        Text("\(percent)%")
-                            .font(DS.Typo.value)
-                            .foregroundStyle(.secondary)
-                            .frame(width: DS.Size.valueLabelWidth, alignment: .trailing)
-                            .accessibilityHidden(true)
-                    }
-                }
-            }
-
-            Section("Playback") {
+        Group {
+            Section("Typing") {
                 Toggle(isOn: $preferences.playKeyUpSounds) {
                     Text("Key-up sounds")
                     Text("Plays a release sound when the pack has one.")
@@ -56,7 +37,5 @@ struct SoundSettingsPane: View {
                 .onChange(of: speakKeys) { _, on in if on { KeySpeaker.shared.prepare() } }
             }
         }
-        .formStyle(.grouped)
-        .frame(width: DS.Size.settingsWidth, height: 380)
     }
 }

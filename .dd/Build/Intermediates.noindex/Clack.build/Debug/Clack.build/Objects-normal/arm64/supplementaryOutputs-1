@@ -1,0 +1,44 @@
+{
+  "/Users/samuelmittman/clack/Clack/App/AppDelegate.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppDelegate.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppDelegate.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/App/ClackApp.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ClackApp.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ClackApp.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ClackApp.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ClackApp.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ClackApp.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Engine/AppModel.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppModel.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppModel.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppModel.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppModel.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AppModel.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Packs/AudioDecoder.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AudioDecoder.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AudioDecoder.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AudioDecoder.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AudioDecoder.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/AudioDecoder.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Shell/ControlsCluster.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ControlsCluster.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ControlsCluster.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ControlsCluster.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ControlsCluster.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ControlsCluster.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Synth/BuiltInPacks.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/BuiltInPacks.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/BuiltInPacks.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/BuiltInPacks.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/BuiltInPacks.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/BuiltInPacks.swiftdeps"
+  }
+}

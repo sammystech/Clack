@@ -6,8 +6,13 @@
 #   NO_PUBLISH=1 ./release.sh 1.0          # build + notarize + DMG only
 #   RESUME=1 ./release.sh 1.0 "notes"      # keep waiting on the same upload
 #
-# Notarization goes through Xcode's signed-in account for team CH6CSBA54G
-# (Xcode → Settings → Accounts); no notarytool profile or password needed.
+# Notarization: if the notarytool keychain profile "clack-notary" exists, the app is
+# signed here and submitted with notarytool (no Xcode account needed). Otherwise it goes
+# through Xcode's signed-in account for team CH6CSBA54G (Xcode → Settings → Accounts).
+#
+# Timestamps go through a local relay (tsrelay.py): since macOS 27.2, Apple's networking
+# forces timestamp.apple.com onto HTTPS, which that server doesn't serve, so a plain
+# `codesign --timestamp` fails with "The timestamp service is not available".
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -26,11 +31,52 @@ ARCHIVE="$BUILD_DIR/$APP_NAME.xcarchive"
 WAIT_MIN="${NOTARY_WAIT_MIN:-30}"
 
 SIGN_IDENTITY=$(security find-identity -v -p codesigning \
-    | grep "Developer ID Application:.*($TEAM_ID)" | head -1 | sed -E 's/.*"(.+)"/\1/' || true)
+    | grep "Developer ID Application:.*($TEAM_ID)" | head -1 | awk '{print $2}' || true)   # by hash: duplicate names are ambiguous
 [ -n "$SIGN_IDENTITY" ] || die "No 'Developer ID Application' certificate for team $TEAM_ID in the keychain."
 echo "  signing as: $SIGN_IDENTITY"
 
-if [ "${RESUME:-}" = 1 ]; then
+NOTARY_PROFILE="${NOTARY_PROFILE:-clack-notary}"
+if xcrun notarytool history --keychain-profile "$NOTARY_PROFILE" >/dev/null 2>&1; then
+    USE_NOTARYTOOL=1
+else
+    USE_NOTARYTOOL=0
+fi
+
+# Start the timestamp relay; stop it when the script exits.
+TS_PORT=8099
+python3 tsrelay.py "$TS_PORT" & RELAY_PID=$!
+trap 'kill $RELAY_PID 2>/dev/null || true' EXIT
+TS_URL="http://127.0.0.1:$TS_PORT/ts01"
+
+if [ "$USE_NOTARYTOOL" = 1 ] && [ "${RESUME:-}" != 1 ]; then
+    say "Setting version $VERSION…"
+    BUILD=$(sed -nE 's/^ *CURRENT_PROJECT_VERSION: "([0-9]+)"/\1/p' project.yml)
+    sed -i '' -E "s/^( *MARKETING_VERSION: )\".*\"/\1\"$VERSION\"/; s/^( *CURRENT_PROJECT_VERSION: )\".*\"/\1\"$((BUILD + 1))\"/" project.yml
+
+    say "Archiving…"
+    xcodegen generate >/dev/null
+    rm -rf "$BUILD_DIR"; mkdir -p "$BUILD_DIR"
+    xcodebuild -project "$APP_NAME.xcodeproj" -scheme "$APP_NAME" -configuration Release \
+        -archivePath "$ARCHIVE" -derivedDataPath "$BUILD_DIR/dd" -allowProvisioningUpdates archive \
+        > "$BUILD_DIR/archive.log" 2>&1 \
+        || { grep -E "error:" "$BUILD_DIR/archive.log" | sort -u | head -20; die "Archive failed. Log: $BUILD_DIR/archive.log"; }
+
+    say "Signing with Developer ID…"
+    NOTARIZED="$BUILD_DIR/notarized"
+    rm -rf "$NOTARIZED"; mkdir -p "$NOTARIZED"
+    ditto "$ARCHIVE/Products/Applications/$APP_NAME.app" "$NOTARIZED/$APP_NAME.app"
+    codesign --force --options runtime --timestamp="$TS_URL" --preserve-metadata=entitlements \
+        --sign "$SIGN_IDENTITY" "$NOTARIZED/$APP_NAME.app" || die "Signing failed."
+
+    say "Notarizing with notarytool (profile $NOTARY_PROFILE)…"
+    ditto -c -k --keepParent "$NOTARIZED/$APP_NAME.app" "$BUILD_DIR/$APP_NAME.zip"
+    xcrun notarytool submit "$BUILD_DIR/$APP_NAME.zip" --keychain-profile "$NOTARY_PROFILE" \
+        --wait --timeout "${WAIT_MIN}m" > "$BUILD_DIR/notarize.log" 2>&1 || true
+    cat "$BUILD_DIR/notarize.log" | grep -E "status:|id:" | tail -2
+    grep -q "status: Accepted" "$BUILD_DIR/notarize.log" \
+        || die "Not accepted. Details: xcrun notarytool log <id> --keychain-profile $NOTARY_PROFILE"
+    xcrun stapler staple "$NOTARIZED/$APP_NAME.app" >/dev/null || die "Stapling failed."
+elif [ "${RESUME:-}" = 1 ]; then
     [ -d "$ARCHIVE" ] || die "Nothing to resume: no archive at $ARCHIVE"
     say "Resuming $VERSION: waiting on the upload already with Apple…"
 else
@@ -72,6 +118,7 @@ PLIST
     echo "  uploaded; waiting for Apple"
 fi
 
+if [ "$USE_NOTARYTOOL" != 1 ]; then
 NOTARIZED="$BUILD_DIR/notarized"
 rm -rf "$NOTARIZED"
 TRIES=$(( WAIT_MIN * 60 / 25 ))
@@ -89,6 +136,7 @@ for attempt in $(seq 1 "$TRIES"); do
     [ "$attempt" -eq "$TRIES" ] && die "Not notarized after $WAIT_MIN minutes. Resume: RESUME=1 ./release.sh $VERSION"
     sleep 25
 done
+fi
 
 APP="$NOTARIZED/$APP_NAME.app"
 [ -d "$APP" ] || die "Notarized app not found at $APP"
@@ -107,7 +155,7 @@ rm -f "$DMG"
 .venv/bin/dmgbuild -s dmg_settings.py -D app="$APP" -D volicon="$APP/Contents/Resources/AppIcon.icns" "$APP_NAME" "$DMG" \
     > "$BUILD_DIR/dmg.log" 2>&1 || { tail -20 "$BUILD_DIR/dmg.log"; die "DMG build failed."; }
 # The app inside carries its own stapled ticket; the updater checks its signature before installing.
-codesign --force --sign "$SIGN_IDENTITY" --timestamp "$DMG" || die "Couldn't sign the DMG."
+codesign --force --sign "$SIGN_IDENTITY" --timestamp="$TS_URL" "$DMG" || die "Couldn't sign the DMG."
 ls -lh "$DMG"
 
 if [ "${NO_PUBLISH:-}" = 1 ]; then

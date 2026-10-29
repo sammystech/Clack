@@ -7,7 +7,7 @@ import SwiftUI
 final class MainWindowController: NSObject, NSWindowDelegate {
     static let shared = MainWindowController()
 
-    private static let autosaveName = "ClackMainWindow"
+    private static let autosaveName = "ClackMainWindow2"
     private var window: NSWindow?
 
     var isVisible: Bool { window?.isVisible ?? false }
@@ -47,7 +47,6 @@ final class MainWindowController: NSObject, NSWindowDelegate {
         if let window { return window }
 
         let hosting = NSHostingController(rootView: MainView().environment(AppModel.shared))
-        hosting.sceneBridgingOptions = [.toolbars]
         hosting.sizingOptions = []   // the window owns its size; SwiftUI fills it
 
         let window = NSWindow(

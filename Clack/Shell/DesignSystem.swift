@@ -31,11 +31,10 @@ enum DS {
         static let iconButton: CGFloat = 30
         static let keycap = CGSize(width: 196, height: 76)   // original logo ~197x72
         static let keycapLip: CGFloat = 2
-        static let mainWindow = CGSize(width: 380, height: 540)
-        static let mainWindowMin = CGSize(width: 340, height: 480)
-        static let mainWindowMax = CGSize(width: 520, height: 760)
+        static let mainWindow = CGSize(width: 500, height: 760)
+        static let mainWindowMin = CGSize(width: 440, height: 520)
+        static let mainWindowMax = CGSize(width: 720, height: 1400)
         static let menuPanelWidth: CGFloat = 300
-        static let settingsWidth: CGFloat = 480
         static let onboardingWidth: CGFloat = 440
         static let valueLabelWidth: CGFloat = 44
         static let pickerMaxWidth: CGFloat = 190

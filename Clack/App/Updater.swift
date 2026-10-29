@@ -1,4 +1,5 @@
 import AppKit
+import Observation
 
 // MARK: - Auto update (GitHub Releases)
 //
@@ -6,7 +7,7 @@ import AppKit
 // .dmg asset, verifies it is signed by the same Developer ID team, swaps the
 // app in place and relaunches. Publishing is `./release.sh X.Y "notes"`.
 
-@MainActor final class Updater {
+@MainActor @Observable final class Updater {
     static let shared = Updater()
 
     static let repo = "sammystech/Clack"
@@ -14,7 +15,14 @@ import AppKit
     static let autoInstallKey = "autoInstallUpdates"
     private let lastCheckKey = "lastUpdateCheck"
     private let skipKey = "skipVersion"
-    private var checking = false
+    /// True while a check is talking to GitHub (drives the spinner in the Updates section).
+    private(set) var checking = false
+    /// Outcome of the last check, shown under the Check button.
+    private(set) var lastResult: String?
+    private(set) var lastChecked: Date? = {
+        let t = UserDefaults.standard.double(forKey: "lastUpdateCheck")
+        return t > 0 ? Date(timeIntervalSince1970: t) : nil
+    }()
 
     /// Install updates without asking (Settings › General). On by default.
     static var autoInstall: Bool {
@@ -46,13 +54,20 @@ import AppKit
         Task { await check(interactive: true) }
     }
 
+    /// From the Updates section: the result shows inline, so only a new version gets a dialog.
+    func checkInline() {
+        Task { await check(interactive: true, quiet: true) }
+    }
+
     // MARK: Check
 
-    private func check(interactive: Bool) async {
+    private func check(interactive: Bool, quiet: Bool = false) async {
         guard !checking else { return }
         checking = true
         defer { checking = false }
-        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: lastCheckKey)
+        let now = Date()
+        UserDefaults.standard.set(now.timeIntervalSince1970, forKey: lastCheckKey)
+        lastChecked = now
 
         var req = URLRequest(url: URL(string: "https://api.github.com/repos/\(Self.repo)/releases/latest")!)
         req.timeoutInterval = 15
@@ -65,7 +80,8 @@ import AppKit
                   obj["tag_name"] is String else { throw URLError(.cannotParseResponse) }
             json = obj
         } catch {
-            if interactive { alert("Couldn't check for updates", error.localizedDescription) }
+            lastResult = "Couldn't reach GitHub."
+            if interactive, !quiet { alert("Couldn't check for updates", error.localizedDescription) }
             return
         }
 
@@ -77,9 +93,11 @@ import AppKit
         let dmgURL = (dmg?["browser_download_url"] as? String).flatMap(URL.init(string:))
 
         guard Self.isNewer(latest, than: currentVersion) else {
-            if interactive { alert("You're up to date", "Clack \(currentVersion) is the latest version.") }
+            lastResult = "Clack is up to date."
+            if interactive, !quiet { alert("You're up to date", "Clack \(currentVersion) is the latest version.") }
             return
         }
+        lastResult = "Clack \(latest) is available."
         guard let dmgURL else {
             if interactive { alert("Update available", "Version \(latest) is out, but it has no download yet.") }
             return
@@ -134,7 +152,7 @@ import AppKit
 
     // MARK: Download + install
 
-    private var downloadTask: URLSessionDownloadTask?
+    @ObservationIgnored private var downloadTask: URLSessionDownloadTask?
 
     private func download(_ url: URL, version: String) async {
         // Clack has to be able to replace its own bundle; catch that before downloading.

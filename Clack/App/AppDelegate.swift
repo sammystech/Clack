@@ -57,6 +57,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             UpdateProgress.shared.begin(version: "9.9") {}
             UpdateProgress.shared.fraction = 0.42
         }
+        if CommandLine.arguments.contains("--check-inline") {
+            Updater.shared.checkInline()
+        }
         #endif
 
         powerOffObserver = NSWorkspace.shared.notificationCenter.addObserver(

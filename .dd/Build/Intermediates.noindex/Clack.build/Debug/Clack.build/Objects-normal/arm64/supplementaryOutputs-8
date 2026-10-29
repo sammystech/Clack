@@ -1,0 +1,37 @@
+{
+  "/Users/samuelmittman/clack/Clack/Engine/SoundBank.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundBank.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundBank.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundBank.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundBank.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundBank.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Engine/SoundEngine.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundEngine.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundEngine.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundEngine.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundEngine.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SoundEngine.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Packs/SingleSoundPack.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SingleSoundPack.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SingleSoundPack.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SingleSoundPack.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SingleSoundPack.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SingleSoundPack.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Settings/ShortcutRecorder.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ShortcutRecorder.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ShortcutRecorder.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ShortcutRecorder.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ShortcutRecorder.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/ShortcutRecorder.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Shell/SettingsOpener.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SettingsOpener.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SettingsOpener.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SettingsOpener.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SettingsOpener.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/SettingsOpener.swiftdeps"
+  }
+}

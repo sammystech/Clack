@@ -11,7 +11,6 @@
 		16B0A545EACCA393B8DBF3B9 /* PackImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66BC5543CF0281A78D3F109 /* PackImporter.swift */; };
 		1B1DA215F15154F3F0F90312 /* ClackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E5F0D41C9E70F5A97B3 /* ClackApp.swift */; };
 		1BC699E8E9B3ED1421678269 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA69207E969F3ABC896C10 /* StatusItemController.swift */; };
-		1C0A996A67D3F9EBAA83D729 /* AboutSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A77FED7F4C1E21BBAD18CC /* AboutSettingsPane.swift */; };
 		2001EDCC1BDF080A75A1A72E /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB19100466FA13EFDFF396E /* MainWindowController.swift */; };
 		26616757D3A7E66367D1B896 /* MenuBarPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5348B0BE5226AF1D37AC857F /* MenuBarPanelView.swift */; };
 		2B353D49A7D176385DA1DDF7 /* KeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4E017D3AD550554E74812 /* KeyMonitor.swift */; };
@@ -40,7 +39,6 @@
 		879CB9D7D422BF5D83BE4A79 /* PacksSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E9DBD681748030C14A73AB /* PacksSettingsPane.swift */; };
 		88AC477A9CED6182CB7B43F7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B122FBEB5BAF1C4E9E0BA5 /* OnboardingView.swift */; };
 		8FBAF24F1EE3E45632E90ECA /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239E07D857F6D0D66219E3BA /* Updater.swift */; };
-		9B6F37509749F636ACC1A581 /* SettingsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F4284EDD13F40A577D22BB /* SettingsRootView.swift */; };
 		9C5F2DD143EA86A345E88341 /* PermissionBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC354649498523AB9F521A3B /* PermissionBanner.swift */; };
 		A4B8560836ABECF2E0163787 /* PackLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53641D6D5712AC075CCCBAF3 /* PackLibrary.swift */; };
 		A6274E49F39C80F67B3FC33D /* MechvibesPackLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09ADDA4CF8949EB0403AC8 /* MechvibesPackLoader.swift */; };
@@ -65,7 +63,6 @@
 
 /* Begin PBXFileReference section */
 		012F3A9FAF24DF1AEEA5CED7 /* SingleSoundPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSoundPack.swift; sourceTree = "<group>"; };
-		06A77FED7F4C1E21BBAD18CC /* AboutSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsPane.swift; sourceTree = "<group>"; };
 		0A9D40C9E164FD0E1544450C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		1773324F8D029CB2A9AADB9A /* KeySpeaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySpeaker.swift; sourceTree = "<group>"; };
 		17F112AD82A0677B48985209 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -97,7 +94,6 @@
 		83850FCE66B326EEEB57CEF2 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		850D12826DD4DBBBF5EFDA3D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		87A32684607C79C0D701E959 /* Packs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Packs; sourceTree = SOURCE_ROOT; };
-		94F4284EDD13F40A577D22BB /* SettingsRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRootView.swift; sourceTree = "<group>"; };
 		963CA867125A7E5A7A5705F7 /* KeycapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeycapView.swift; sourceTree = "<group>"; };
 		A6310B81FDAC4C1E3701555A /* KeyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLabels.swift; sourceTree = "<group>"; };
 		A7E4B7695C1E0BABCE2221D7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -164,14 +160,12 @@
 		BDBAE2A21D50AB603A5BF3D9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				06A77FED7F4C1E21BBAD18CC /* AboutSettingsPane.swift */,
 				5A6C83FEBE085B2A2E21CC18 /* GeneralSettingsPane.swift */,
 				6396F6AB0C898FFD713271A8 /* HotKeyCenter.swift */,
 				F81E072EE8FA4EA05F0B83FB /* KeyCombo.swift */,
 				D977415FDB136A13FA4F512F /* LaunchAtLogin.swift */,
 				69E9DBD681748030C14A73AB /* PacksSettingsPane.swift */,
 				0A9D40C9E164FD0E1544450C /* Preferences.swift */,
-				94F4284EDD13F40A577D22BB /* SettingsRootView.swift */,
 				2A4342FC00CA2A73A3093B70 /* ShortcutRecorder.swift */,
 				FBCAF7B6D70484CD7D0395E6 /* SoundSettingsPane.swift */,
 			);
@@ -337,7 +331,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C0A996A67D3F9EBAA83D729 /* AboutSettingsPane.swift in Sources */,
 				52E0C05C96647ADFB6C1E208 /* AppDelegate.swift in Sources */,
 				5326958A3094EDE402D0ED3B /* AppModel.swift in Sources */,
 				CFFCD0CB035C3D6E7D2B15DD /* AudioDecoder.swift in Sources */,
@@ -375,7 +368,6 @@
 				61221E9F249BA2BA280CA647 /* Preferences.swift in Sources */,
 				5491B8E9869AA3FDA3AB5F82 /* SeededRandom.swift in Sources */,
 				F0A1F7ACFE25BFC281AF80A2 /* SettingsOpener.swift in Sources */,
-				9B6F37509749F636ACC1A581 /* SettingsRootView.swift in Sources */,
 				BAD112E425268405D9D3D002 /* ShortcutRecorder.swift in Sources */,
 				B42858DFABB4E713306DDF7F /* SingleSoundPack.swift in Sources */,
 				4A400C75F8DC14A8AE00FD68 /* SoundBank.swift in Sources */,
@@ -402,7 +394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 19;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CH6CSBA54G;
 				ENABLE_APP_SANDBOX = NO;
@@ -410,7 +402,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Clack/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
 				PRODUCT_NAME = Clack;
 				SDKROOT = macosx;
@@ -545,7 +537,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 19;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CH6CSBA54G;
 				ENABLE_APP_SANDBOX = NO;
@@ -553,7 +545,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Clack/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelmittman.Clack;
 				PRODUCT_NAME = Clack;
 				SDKROOT = macosx;

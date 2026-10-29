@@ -50,7 +50,7 @@ struct ControlsCluster: View {
                 .foregroundStyle(.secondary)
                 .frame(width: 20)
                 .accessibilityHidden(true)
-            Text("Sound")
+            Text("Pack")
                 .font(DS.Typo.body)
                 .foregroundStyle(.primary)
             Spacer(minLength: DS.Space.s)

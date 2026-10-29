@@ -16,36 +16,19 @@ struct PacksSettingsPane: View {
     private var library: PackLibrary { model.library }
 
     var body: some View {
-        Form {
-            foldersSection
+        Group {
             packsSection
+            foldersSection
             if !library.failures.isEmpty {
                 failuresSection
             }
         }
-        .formStyle(.grouped)
-        .frame(width: DS.Size.settingsWidth, height: 560)
-        .overlay {
-            if isDropTargeted {
-                RoundedRectangle(cornerRadius: DS.Radius.thumb, style: .continuous)
-                    .strokeBorder(DS.Palette.accent, lineWidth: 2)
-                    .padding(DS.Space.xs)
-                    .allowsHitTesting(false)
-            }
-        }
-        .dropDestination(for: URL.self) { urls, _ in
-            let files = urls.filter(\.isFileURL)
-            guard !files.isEmpty else { return false }
-            importPacks(files)
-            return true
-        } isTargeted: { isDropTargeted = $0 }
-        .onAppear { model.reloadPacks() }
     }
 
     // MARK: - Folders
 
     private var foldersSection: some View {
-        Section("Folders") {
+        Section("Pack Folders") {
             ForEach(library.folders) { folder in
                 folderRow(folder)
             }
@@ -107,21 +90,33 @@ struct PacksSettingsPane: View {
     // MARK: - Packs
 
     private var packsSection: some View {
-        Section("Packs") {
+        Section {
             VStack(alignment: .leading, spacing: DS.Space.s) {
-                Text(countText)
+                HStack(spacing: DS.Space.s) {
+                    Button("Add Sound…", systemImage: "waveform.badge.plus", action: chooseSound)
+                        .buttonStyle(.borderedProminent)
+                    Button("Add Pack…", systemImage: "plus", action: choosePacks)
+                    Spacer()
+                    Menu {
+                        Button("Random Pack") { model.randomPack() }
+                            .disabled(!model.canRandomize)
+                        Button("Reload Packs") { model.reloadPacks() }
+                        Button("Open Packs Folder") { model.openCustomPacksFolder() }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                    }
+                    .menuStyle(.button)
+                    .menuIndicator(.hidden)
+                    .fixedSize()
+                    .help("More")
+                }
+                .controlSize(.large)
+                .disabled(isImporting)
+
+                Text("Add Sound plays one short clip on every key. You can also drop a pack folder or .zip here.")
                     .font(DS.Typo.caption)
                     .foregroundStyle(.secondary)
-
-                HStack(spacing: DS.Space.s) {
-                    Button("Add Sound…", action: chooseSound)
-                    Button("Add Pack…", action: choosePacks)
-                    Button("Reload Packs") { model.reloadPacks() }
-                    Button("Random Pack") { model.randomPack() }
-                        .disabled(!model.canRandomize)
-                    Button("Open Folder") { model.openCustomPacksFolder() }
-                }
-                .disabled(isImporting)
+                    .fixedSize(horizontal: false, vertical: true)
 
                 if isImporting {
                     ProgressView()
@@ -147,6 +142,27 @@ struct PacksSettingsPane: View {
             }
             .padding(.vertical, DS.Space.xs)
             .animation(reduceMotion ? nil : DS.Motion.progress, value: isImporting)
+            .overlay {
+                if isDropTargeted {
+                    RoundedRectangle(cornerRadius: DS.Radius.thumb, style: .continuous)
+                        .strokeBorder(DS.Palette.accent, lineWidth: 2)
+                        .padding(-DS.Space.xs)
+                        .allowsHitTesting(false)
+                }
+            }
+            .dropDestination(for: URL.self) { urls, _ in
+                let files = urls.filter(\.isFileURL)
+                guard !files.isEmpty else { return false }
+                importPacks(files)
+                return true
+            } isTargeted: { isDropTargeted = $0 }
+        } header: {
+            HStack {
+                Text("Packs")
+                Spacer()
+                Text(countText)
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 

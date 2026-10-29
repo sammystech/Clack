@@ -1,0 +1,37 @@
+{
+  "/Users/samuelmittman/clack/Clack/Engine/KeySpeaker.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeySpeaker.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeySpeaker.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeySpeaker.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeySpeaker.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeySpeaker.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Engine/Log.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/Log.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/Log.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/Log.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/Log.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/Log.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Settings/LaunchAtLogin.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/LaunchAtLogin.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/LaunchAtLogin.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/LaunchAtLogin.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/LaunchAtLogin.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/LaunchAtLogin.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Shell/KeycapView.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeycapView.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeycapView.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeycapView.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeycapView.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/KeycapView.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Shell/MainView.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MainView.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MainView.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MainView.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MainView.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MainView.swiftdeps"
+  }
+}

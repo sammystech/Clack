@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct GeneralSettingsPane: View {
-    @AppStorage(Updater.autoInstallKey) private var autoInstallUpdates = true
     @State private var launchAtLogin = false
     @State private var needsApproval = false
     @State private var loginError: String?
@@ -12,97 +11,57 @@ struct GeneralSettingsPane: View {
     var body: some View {
         @Bindable var preferences = model.preferences
 
-        Form {
-            Section {
-                Toggle("Launch at login", isOn: Binding(
-                    get: { launchAtLogin },
-                    set: { setLaunchAtLogin($0) }))
-                Toggle(isOn: $preferences.startHidden) {
-                    Text("Start hidden")
-                    Text("When Clack opens at login, it stays in the menu bar.")
-                }
-                .disabled(!launchAtLogin)
-                if needsApproval {
-                    LabeledContent("Approve Clack in System Settings to finish.") {
-                        Button("Open Login Items") { LaunchAtLogin.openLoginItemsSettings() }
-                    }
-                }
-            } header: {
-                Text("Startup")
-            } footer: {
-                if loginError != nil || !isInApplications {
-                    VStack(alignment: .leading, spacing: 4) {
-                        if let loginError {
-                            Text(loginError)
-                                .foregroundStyle(.secondary)
-                        }
-                        if !isInApplications {
-                            Text("Move Clack to the Applications folder so it opens at login reliably.")
-                                .foregroundStyle(.tertiary)
-                        }
-                    }
-                    .font(DS.Typo.caption)
+        Section {
+            Toggle("Launch at login", isOn: Binding(
+                get: { launchAtLogin },
+                set: { setLaunchAtLogin($0) }))
+            Toggle(isOn: $preferences.startHidden) {
+                Text("Start hidden")
+                Text("When Clack opens at login, it stays in the menu bar.")
+            }
+            .disabled(!launchAtLogin)
+            if needsApproval {
+                LabeledContent("Approve Clack in System Settings to finish.") {
+                    Button("Open Login Items") { LaunchAtLogin.openLoginItemsSettings() }
                 }
             }
-
-            Section {
-                Toggle(isOn: $autoInstallUpdates) {
-                    Text("Install updates automatically")
-                    Text("Clack checks GitHub every few hours and relaunches itself on a new version.")
-                }
-                LabeledContent("Version \(Updater.shared.currentVersion)") {
-                    Button("Check Now") { Updater.shared.checkNow() }
-                }
-            } header: {
-                Text("Updates")
-            }
-
-            Section {
-                Toggle("Show menu bar icon", isOn: $preferences.showMenuBarIcon)
-            } header: {
-                Text("Menu Bar")
-            } footer: {
+            Toggle(isOn: $preferences.showMenuBarIcon) {
+                Text("Show menu bar icon")
                 if !preferences.showMenuBarIcon {
-                    Text("Open Clack again from Finder or Spotlight to see its window.")
-                        .font(DS.Typo.caption)
-                        .foregroundStyle(.secondary)
+                    Text("Open Clack from Finder or Spotlight to see this window.")
                 }
             }
-
-            Section {
-                LabeledContent("Mute shortcut") {
-                    ShortcutRecorder(combo: $preferences.muteShortcut)
-                }
-            } header: {
-                Text("Shortcut")
-            } footer: {
-                Text("Works in any app, even while Clack is muted.")
-                    .font(DS.Typo.caption)
-                    .foregroundStyle(.secondary)
+            LabeledContent {
+                ShortcutRecorder(combo: $preferences.muteShortcut)
+            } label: {
+                Text("Mute shortcut")
+                Text("Works in any app.")
             }
-
-            Section("Permission") {
-                LabeledContent("Input Monitoring") {
-                    if model.permission.inputMonitoringGranted {
-                        Label("Allowed", systemImage: "checkmark.circle.fill")
-                            .font(DS.Typo.body)
-                            .foregroundStyle(DS.Palette.success)
-                    } else {
-                        HStack(spacing: 8) {
-                            Text("Not allowed")
-                                .foregroundStyle(.secondary)
-                            Button("Open Settings") { model.permission.request() }
-                        }
+            LabeledContent("Input Monitoring") {
+                if model.permission.inputMonitoringGranted {
+                    Label("Allowed", systemImage: "checkmark.circle.fill")
+                        .font(DS.Typo.body)
+                        .foregroundStyle(DS.Palette.success)
+                } else {
+                    Button("Open Settings") { model.permission.request() }
+                }
+            }
+        } header: {
+            Text("General")
+        } footer: {
+            if loginError != nil || !isInApplications {
+                VStack(alignment: .leading, spacing: 4) {
+                    if let loginError {
+                        Text(loginError)
+                    }
+                    if !isInApplications {
+                        Text("Move Clack to the Applications folder so it opens at login reliably.")
                     }
                 }
-                Button("Show Welcome Again") {
-                    model.showOnboarding = true
-                    model.requestMainWindow?()
-                }
+                .font(DS.Typo.caption)
+                .foregroundStyle(.secondary)
             }
         }
-        .formStyle(.grouped)
-        .frame(width: DS.Size.settingsWidth, height: 470)
         .onAppear(perform: refreshLoginState)
     }
 

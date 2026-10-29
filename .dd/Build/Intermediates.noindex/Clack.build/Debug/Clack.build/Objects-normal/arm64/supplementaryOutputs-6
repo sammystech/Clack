@@ -1,0 +1,37 @@
+{
+  "/Users/samuelmittman/clack/Clack/Onboarding/OnboardingView.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/OnboardingView.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/OnboardingView.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/OnboardingView.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/OnboardingView.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/OnboardingView.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Packs/PackImporter.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackImporter.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackImporter.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackImporter.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackImporter.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackImporter.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Packs/PackLibrary.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackLibrary.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackLibrary.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackLibrary.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackLibrary.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackLibrary.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Packs/PackModels.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackModels.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackModels.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackModels.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackModels.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/PackModels.swiftdeps"
+  },
+  "/Users/samuelmittman/clack/Clack/Shell/MenuBarPanelView.swift" : {
+    "const-values" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MenuBarPanelView.swiftconstvalues",
+    "dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MenuBarPanelView.d",
+    "diagnostics" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MenuBarPanelView.dia",
+    "object" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MenuBarPanelView.o",
+    "swift-dependencies" : "/Users/samuelmittman/clack/.dd/Build/Intermediates.noindex/Clack.build/Debug/Clack.build/Objects-normal/arm64/MenuBarPanelView.swiftdeps"
+  }
+}
